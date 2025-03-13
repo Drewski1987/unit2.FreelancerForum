@@ -6,12 +6,13 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    border-style: solid; 
 }
 
-#container{
+#freelancersContainer{
     width: 50%;
     margin: auto;
     padding: 15px;
     text-align: center;
-    border: 2pt solid black;
+    
 }
