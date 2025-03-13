@@ -27,7 +27,7 @@ body.append(h1);
 
 
 function averagePrice () {
-  const totalPrice = freelancers.reduce((total, person) => total+person.price,0)
+  const totalPrice = freelancers.reduce((total, person) => total + person.price, 0)
   return (totalPrice / freelancers.length).toFixed(2)
 }
 
