@@ -3,6 +3,16 @@ const freelancers = [
     { name: "Bob", occupation: "Teacher", price: 50 },
     
   ];
+
+  const newFreelancers = [
+    { name: "John", occupation: "Manager", price: 60 },
+    { name: "Jacob", occupation: "Analyst", price: 75 },
+    { name: "Misty", occupation: "lawyer", price: 100 },
+    { name: "Louie", occupation: "Sports Agent", price: 90 },
+    { name: "James", occupation: "Principle", price: 80 },
+    { name: "Rex", occupation: "Plummer", price: 15 },
+    { name: "Tom", occupation: "Nurse", price: 110 },
+  ];
   
 function init() {
 
@@ -21,9 +31,9 @@ function averagePrice () {
   return (totalPrice / freelancers.length).toFixed(2)
 }
 
-function updatedAveragePrice() {
+function updateAveragePrice() {
   const h3 = document.getElementById("averagePrice");
-  h3.innerHTML = `Average Price: ${averagePrice()}`;
+  h3.innerHTML = `Average Price: $${averagePrice()}`;
 
 }
 
@@ -37,7 +47,7 @@ h2.innerHTML = "Available Freelancers"
 body.append(h2);
 
 const freelancersContainer = document.createElement("table")
-freelancersContainer.id = "freelancerContainer"
+freelancersContainer.id = "freelancersContainer"
 body.append(freelancersContainer)
 
 function renderFreelancers () {
@@ -49,21 +59,36 @@ function renderFreelancers () {
                             <td> <strong> Price: </strong> $${person.price}</td>`;
       freelancersContainer.appendChild(freelancer);
   })
-  updatedAveragePrice()
+  updateAveragePrice()
 }
 function addCarol () {
   const carol = { name: "Carol", occupation: "Programmer", price: 70 };
   freelancers.push(carol)
   renderFreelancers()
 }
-function addFreelancers (){
+function addFreelancers () {
   const randomIndex = Math.floor(Math.random() * newFreelancers.length)
-  const newfreelancer = newFreelancers[randomIndex]
+  const newFreelancer = newFreelancers[randomIndex]
   freelancers.push(newFreelancer)
   renderFreelancers()
 }
+renderFreelancers();
 
+setTimeout(() => {
+  addCarol();
+}, 1000);
 
+let add;
+
+setTimeout(() => {
+  addFreelancers();
+
+  add = setInterval(addFreelancers, 1000)
+}, 2000);
+
+setTimeout(() => {
+  clearInterval(add)
+}, 10000);
 
   }
   init()
